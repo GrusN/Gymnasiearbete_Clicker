@@ -1,1 +1,12 @@
-snorre
+body {
+    background-color: rgb(167, 186, 199);
+}
+.button { width: 200px;
+height: 100px;
+background-color: darkcyan;
+cursor: pointer;
+}
+#total {
+font-size: 20px;
+}
+

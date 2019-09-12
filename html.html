@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
     <script type="text/javascript" src="js.js"></script>
 </head>
 <body>
-    <button onClick="pointClick(clickAdder)"> Click me</button>
-    <button onClick="addFactories()">Buy A Factory</button>
+    <button class="button" onClick="pointClick(clickAdder)"> Click me</button>
+    <button class="button" id='buyfactory' onClick="addFactories()">Buy A Factory</button>
+    <button class="button" id='upgrademouse' onClick="upgradeMouse()">Upgrade your mouse</button>
+    <p id="total">NaN</p>
+    <p id="ppc">NaN</p>
+    <p id="totalfactories">NaN</p>
+    <p id="costfactory">NaN</p>
+
+   
 </body>
 </html>
