@@ -15,7 +15,7 @@ let mouse = {
     addvar: 1
 }
 
-function pointClick(){                  // Lägger till poäng per klick och visar antal poäng i consolen
+function pointClick(){                  // Lägger till poäng per klick
     points = points + mouse.addvar;
 };
 
