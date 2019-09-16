@@ -1,0 +1,15 @@
+köp 1/10/100, knappar blir röda beroende på om man har råd med 1/10/100
+
+Mer fabriker
+
+
+Upgrades 
+Funktion som visar fabriker/upgrades beroende på hur långt man kommit.
+
+
+
+
+Sparfunktion
+
+
+Hosta
