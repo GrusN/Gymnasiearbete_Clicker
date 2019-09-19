@@ -1,17 +1,66 @@
 body {
-    background-color: rgb(167, 186, 199);
+    background-color: rgb(72, 89, 100);
 }
 .button { width: 200px;
-height: 100px;
-background-color: darkcyan;
-cursor: pointer;
+    height: 100px;
+    background-color: darkcyan;
+    cursor: pointer;
+    border: solid black 1px;
+    box-shadow: 2px 5px;
+    outline: none;
+}
+.button:active {
+    box-shadow: 1px 2px;
+    transform: translatey(3px) translatex(1px);
+}
+.smallbutton {
+    width: 50px;
+    height: 25px;
+    background-color: gray;
+    border:solid black 1px;
+    box-shadow: 2px 5px;
+    outline: none;
+}
+.smallbutton:active {
+    box-shadow: 1px 2px;
+    transform: translatey(3px) translatex(1px);
 }
 #total {
-font-size: 20px;
+    font-size: 30px;
 }
-#totalfactoriesV2{
-    visibility: hidden;
+.mouse {
+    color: rgb(128, 199, 48);
+    font-size: 20px;
 }
-#costfactoryV2{
+.factory {
+    color: rgb(219, 219, 24);
+    font-size: 20px;
+}
+.factoryV2{
     visibility: hidden;
+    color: rgb(219, 170, 24);
+    font-size: 20px;
+}
+.bank {
+    visibility: hidden;
+    color: rgb(219, 105, 24);
+    font-size: 20px;
+}
+#upgrademouse {
+    background-color: rgb(128, 199, 48);
+}
+#buyfactory {
+    background-color: rgb(219, 219, 24);
+}
+#buyfactoryV2 {
+    background-color: rgb(219, 170, 24);
+}
+#buybank {
+    background-color: rgb(219, 105, 24);
+}
+#signature {
+    position: absolute;
+    font-size:10px;
+    top: 97%;
+    left: 93%;
 }
