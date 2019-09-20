@@ -7,7 +7,7 @@ Strukturera Html
 Upgrades 
 Funktion som visar fabriker/upgrades beroende på hur långt man kommit.
 
-
+Handling/mål
 
 
 Sparfunktion
