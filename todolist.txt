@@ -9,8 +9,8 @@ Funktion som visar fabriker/upgrades beroende på hur långt man kommit.
 
 Handling/mål
 
-
 Sparfunktion
 
+Balansera spelet
 
 Hosta
