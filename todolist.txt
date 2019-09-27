@@ -1,4 +1,5 @@
-köp 1/10/100, knappar blir röda beroende på om man har råd med 1/10/100
+*DONE!* köp 1/10/100, knappar blir röda beroende på om man har råd med 1/10/100 
+
 
 Mer fabriker
 
