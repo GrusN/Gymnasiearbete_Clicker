@@ -4,30 +4,68 @@ let mouse = {
     count:0,                            // Antal
     cost: 5,                            // Kostnad
     addvar: 1,                          // Hur många poäng per antal
-    inflation: 1.5                      // HUr mycket priset ökar per köp
+    inflation: 1.5,                      // HUr mycket priset ökar per köp
+    modified: 0
 }
 let factory = {
     count:0,                            
     cost: 100,                           
     addvar: 5,                           
-    inflation: 1.1
+    inflation: 1.1,
+    modified: 0
 }
 let factoryV2 = {
     count:0,
     cost: 1000,
     addvar: 10,
-    inflation: 1.1
+    inflation: 1.1,
+    modified: 0
 }
 
 let bank = {
     count: 0,
     cost: 100000,
     addvar: 100,
-    inflation: 1.1
+    inflation: 1.1,
+    modified: 0
 }
 
 function howMany(number) {              // Ändrar värdet på howmany till det nummer som skickas från knappar.
     howmany = number;
+}
+
+
+
+function multipleMousePrice() {
+    mouse.modified = mouse.cost;
+    for (let i = 1; i <=howmany; i++){
+        mouse.modified  = mouse.modified*mouse.inflation;
+        mouse.modified = Math.ceil(mouse.modified);
+    }
+}
+
+function multipleFactoryPrice() {
+    factory.modified = factory.cost;
+    for (let i = 1; i <=howmany; i++){
+        factory.modified  = factory.modified*factory.inflation;
+        factory.modified = Math.ceil(factory.modified);
+    }
+}
+
+function multipleFactoryV2Price() {
+    factoryV2.modified = factoryV2.cost;
+    for (let i = 1; i <=howmany; i++){
+        factoryV2.modified  = factoryV2.modified*factoryV2.inflation;
+        factoryV2.modified = Math.ceil(factoryV2.modified);
+    }
+}
+
+function multipleBankPrice() {
+    bank.modified = bank.cost;
+    for (let i = 1; i <=howmany; i++){
+        bank.modified  = bank.modified*bank.inflation;
+        bank.modified = Math.ceil(bank.modified);
+    }
 }
 
 function givePoints(amount) {           //Cheat vi kan använda för att testa om saker funkar utan att behöva klicka en massa
@@ -39,29 +77,31 @@ function pointClick(){                  // Lägger till poäng per klick
 };
 
 function upgradeMouse(){                //Uppgraderar musen, tar bort kostnad från totala points och höjer kostnad.
-    mouse.count = mouse.count + 1;
+    mouse.cost = mouse.modified;
+    mouse.count = mouse.count + howmany;
     points = points - mouse.cost;
-    mouse.addvar = mouse.addvar + 1;
-    mouse.cost = mouse.cost * mouse.inflation;
+    mouse.addvar = mouse.addvar + howmany;
+    
 
 }
 
 function addFactories() {               // Lägger till fabrik, tar bort kostnad från totala poäng och höjer kostnad.
-    factory.count = factory.count + 1;
+    factory.cost = factory.modified;
+    factory.count = factory.count + howmany;
     points = points - factory.cost;
-    factory.cost = factory.cost * factory.inflation;
+    
 }
 
 function addFactoriesV2() {               // Lägger till fabrikV2, tar bort kostnad från totala poäng och höjer kostnad.
-    factoryV2.count = factoryV2.count + 1;
+    factoryV2.cost = factoryV2.modified;
+    factoryV2.count = factoryV2.count + howmany;
     points = points - factoryV2.cost;
-    factoryV2.cost = factoryV2.cost * factoryV2.inflation;
 }
 
 function addBanks() {                   // Lägger till bank, tar bort kostnad från totala poäng och höjer kostnad.
-    bank.count = bank.count + 1;
+    bank.cost = bank.modified;
+    bank.count = bank.count + howmany;
     points = points - bank.cost;
-    bank.cost = bank.cost * bank.inflation;
 }
 
 window.setInterval(function(){          // Lägger till poäng från fabriker varje sekund
@@ -72,10 +112,6 @@ points = points + (factory.addvar * factory.count) + (factoryV2.addvar * factory
 window.setInterval(function(){          //Allt inom kodblocket körs varje millisekund
     pps = (factory.addvar * factory.count) + (factoryV2.addvar * factoryV2.count) + (bank.addvar * bank.count);      //Räknar ut hur många poäng som läggs till per sekund av fabrikerna
     points = Math.ceil(points);                             //Avrundar points till heltal
-    mouse.cost = Math.ceil(mouse.cost);                     //Avrundar mouse.cost till heltal
-    factory.cost = Math.ceil(factory.cost);                 //Avrundar factory.cost till heltal
-    factoryV2.cost = Math.ceil(factoryV2.cost);             //Avrundar factoryV2.cost till heltal
-    bank.cost = Math.ceil(bank.cost);                       //Avrundar bank.cost till heltal
         document.getElementById('ppc').innerText = "Points per click: " + mouse.addvar;   //Dessa sju rader uppdaterar ppc, points, pps, mouse.cost, factory.count/cost, factoryV2.count/cost i html.
         document.getElementById('mousecost').innerText = "Mouse Upgrade Cost: " + mouse.cost;
         document.getElementById('total').innerText = "Points: " + points + " (" + pps + " per second)";
@@ -87,7 +123,7 @@ window.setInterval(function(){          //Allt inom kodblocket körs varje milli
         document.getElementById('costbanks').innerText = "Bank cost: " + bank.cost;
 
 
-    if (points >= factory.cost){                             //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd att köpa en fabrik.
+    if (points >= factory.modified){                             //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd att köpa en fabrik.
         document.getElementById('buyfactory').style.opacity = "1";
         document.getElementById('buyfactory').style.pointerEvents = "auto";
         document.getElementById('buyfactory').style.cursor = "pointer";
@@ -99,7 +135,7 @@ window.setInterval(function(){          //Allt inom kodblocket körs varje milli
 
     }
 
-    if (points >= factoryV2.cost){                             //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd att köpa en fabrikV2.
+    if (points >= factoryV2.modified){                             //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd att köpa en fabrikV2.
         document.getElementById('buyfactoryV2').style.opacity = "1";
         document.getElementById('buyfactoryV2').style.pointerEvents = "auto";
         document.getElementById('buyfactoryV2').style.cursor = "pointer";
@@ -111,7 +147,7 @@ window.setInterval(function(){          //Allt inom kodblocket körs varje milli
 
     }
 
-    if (points >=mouse.cost){                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd att uppgradera musen.
+    if (points >=mouse.modified){                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd att uppgradera musen.
         document.getElementById('upgrademouse').style.opacity = "1";
         document.getElementById('upgrademouse').style.pointerEvents = "auto"
         document.getElementById('upgrademouse').style.cursor = "pointer";
@@ -128,7 +164,7 @@ window.setInterval(function(){          //Allt inom kodblocket körs varje milli
         document.getElementById('buyfactoryV2').innerHTML = "Buy A FactoryV2";
     }
 
-    if (points >=bank.cost){                               //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd att köpa en bank.      
+    if (points >=bank.modified){                               //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd att köpa en bank.      
         document.getElementById('buybank').style.opacity = "1";
         document.getElementById('buybank').style.pointerEvents = "auto"
         document.getElementById('buybank').style.cursor = "pointer";
@@ -162,6 +198,9 @@ window.setInterval(function(){          //Allt inom kodblocket körs varje milli
     else {
         document.getElementById('100x').style.backgroundColor = "gray";
     }
-
+    multipleMousePrice();
+    multipleFactoryPrice();
+    multipleFactoryV2Price();
+    multipleBankPrice();
     }, 1);
 
