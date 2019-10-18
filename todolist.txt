@@ -1,11 +1,11 @@
 *DONE!* köp 1/10/100, knappar blir röda beroende på om man har råd med 1/10/100 
 
 
-Mer fabriker
+Mer fabriker v.43
 
-Strukturera Html
+Tool tip v. 45
 
-Upgrades 
+Upgrades v.47
 Funktion som visar fabriker/upgrades beroende på hur långt man kommit.
 
 Handling/mål
@@ -14,4 +14,11 @@ Sparfunktion
 
 Balansera spelet
 
+Ska vara klart t jul lovet
+
+Efter lovet
+  l
+  v
 Hosta
+
+Skriva
