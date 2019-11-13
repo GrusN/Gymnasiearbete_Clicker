@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,25 @@
     <link rel="stylesheet" type="text/css" href="css.css">
     <script type="text/javascript" src="js.js"></script>
 </head>
+
 <body>
+    <audio id="myAudio">
+        <source src="sound/klick_ljud.mp3" type="audio/mpeg">
+    </audio>
     <!--BUTTONS-->
-    <button class="button" onClick="pointClick(mouse.addvar)"> Click me</button>
+    <button class="button" onClick="pointClick()"> Click me</button>
     <button class="button" id='upgrademouse' onClick="upgradeMouse()">Upgrade your mouse</button>
     <button class="button" id='buyfactory' onClick="addFactories()">Buy A Factory</button>
     <button class="button" id='buyfactoryV2' onClick="addFactoriesV2()">?</button>
-    <button class="button" id='buybank' onClick ="addBanks()">??</button>
+    <button class="button" id='buybank' onClick="addBanks()">??</button>
+    <button class="button" id='buybankV2' onClick="addBanksV2()">???</button>
+
     <!--X-->
-    <button class="smallbutton" id='1x' onClick ="howMany(1)">1x</button>
-    <button class="smallbutton" id='10x' onClick ="howMany(10)">10x</button>
-    <button class="smallbutton" id='100x' onClick ="howMany(100)">100x</button>
+    <div class="smallbuttons">
+        <button class="smallbutton" id='1x' onClick="howMany(1)">1x</button>
+        <button class="smallbutton" id='10x' onClick="howMany(10)">10x</button>
+        <button class="smallbutton" id='100x' onClick="howMany(100)">100x</button>
+    </div>
     <!--TEXT-->
     <p id="total">NaN</p>
     <p class="mouse" id="ppc">NaN</p>
@@ -29,7 +38,11 @@
     <p class="factoryV2" id="costfactoryV2">NaN</p>
     <p class="bank" id="totalbanks">NaN</p>
     <p class="bank" id="costbanks">NaN</p>
+    <p class="bankV2" id="totalbanksV2">NaN</p>
+    <p class="bankV2" id="costbanksV2">NaN</p>
 
-   <p id="signature">Made by Lil Audem and Grus!</p>
+
+    <p id="signature">Made by Lil Audem and Grus!</p>
 </body>
+
 </html>
