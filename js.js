@@ -87,14 +87,24 @@ function upgradeMouse() {                //Uppgraderar musen, tar bort kostnad f
     mouse.count = mouse.count + howmany;
     points = points - mouse.cost;
     mouse.addvar = mouse.addvar + howmany;
-
-
+    if (document.getElementById('mouseAudio').paused) {
+        document.getElementById('mouseAudio').play();
+    }
+    else {
+        document.getElementById('mouseAudio').currentTime = 0;
+    }
 }
 
 function addFactories() {               // Lägger till fabrik, tar bort kostnad från totala poäng och höjer kostnad.
     factory.cost = factory.modified;
     factory.count = factory.count + howmany;
     points = points - factory.cost;
+    if (document.getElementById('factoryAudio').paused) {
+        document.getElementById('factoryAudio').play();
+    }
+    else {
+        document.getElementById('factoryAudio').currentTime = 0;
+    }
 
 }
 
@@ -108,6 +118,12 @@ function addBanks() {                   // Lägger till bank, tar bort kostnad f
     bank.cost = bank.modified;
     bank.count = bank.count + howmany;
     points = points - bank.cost;
+    if (document.getElementById('bankAudio').paused) {
+        document.getElementById('bankAudio').play();
+    }
+    else {
+        document.getElementById('bankAudio').currentTime = 0;
+    }
 }
 
 window.setInterval(function () {          // Lägger till poäng från fabriker varje sekund
