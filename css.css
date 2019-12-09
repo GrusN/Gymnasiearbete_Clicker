@@ -31,6 +31,15 @@ body {
     box-shadow: 1px 2px;
     transform: translatey(3px) translatex(1px);
 }
+#infobox {
+    position:absolute;
+    top: 150px;
+    border: 1px solid black;
+    width: 500px;
+}
+#infotitle {
+    font-size: 20px;
+}
 #total {
     font-size: 30px;
 }
@@ -67,6 +76,82 @@ body {
 #signature {
     position: absolute;
     font-size:10px;
-    top: 97%;
+    top: 95%;
     left: 93%;
+}
+#upgtitle {
+    position: absolute;
+    top:350px;
+    left: 830px;
+    font-size: 40px;
+}
+#upgcontainer {
+    display:flex;
+    position: absolute;
+    top: 400px;
+    left: 700px;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 200px;
+    border: 1px solid black;
+
+}
+
+.upg{
+    width: 100px;
+    height:40px;
+    border:1px solid black;
+    outline: none;
+    cursor: pointer;
+}
+#mouseupg1{
+    background-color:rgb(128, 199, 48);
+}
+#mouseupg2{
+    background-color:rgb(128, 199, 48);
+}
+#mouseupg3{
+    background-color:rgb(128, 199, 48);
+}
+#mouseupg4{
+    background-color:rgb(128, 199, 48);
+}
+#factoryupg1 {
+    background-color:rgb(219, 219, 24);
+}
+#factoryupg2 {
+    background-color:rgb(219, 219, 24);
+}
+#factoryupg3 {
+    background-color:rgb(219, 219, 24);
+}
+#factoryupg4 {
+    background-color:rgb(219, 219, 24);
+}
+#v2upg1 {
+    background-color: rgb(219, 170, 24);  
+}
+#v2upg2 {
+    background-color: rgb(219, 170, 24);  
+}
+#v2upg3 {
+    background-color: rgb(219, 170, 24);  
+}
+#v2upg4 {
+    background-color: rgb(219, 170, 24);  
+}
+#bankupg1 {
+    background-color: rgb(219, 105, 24);
+}
+#bankupg2 {
+    background-color: rgb(219, 105, 24);
+}
+#bankupg3 {
+    background-color: rgb(219, 105, 24);
+}
+#bankupg4 {
+    background-color: rgb(219, 105, 24);
+}
+#winupg {
+    background-color: deeppink;
 }
