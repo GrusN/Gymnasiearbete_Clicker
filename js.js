@@ -30,11 +30,123 @@ let bank = {
     modified: 0
 }
 
+let powerCost = {
+    //mouse
+    mouse1: 10,
+    mouse2: 10,
+    mouse3: 10,
+    mouse4: 10,
+    //factory
+    factory1: 10,
+    factory2: 10,
+    factory3: 10,
+    factory4: 10,
+    //factoryV2
+    factoryV21: 10,
+    factoryV22: 10,
+    factoryV23: 10,
+    factoryV24: 10,
+    //bank
+    bank1: 10,
+    bank2: 10,
+    bank3: 10,
+    bank4: 10,
+    win: 10
+}
+
 function howMany(number) {              // Ändrar värdet på howmany till det nummer som skickas från knappar.
     howmany = number;
 }
 
+function choosePower(power) {
+    switch (power) {
+        //mus upgrade
+        case 1:
+            mouse.addvar = mouse.addvar * 2;
+            points = points - powerCost.mouse1;
+            break;
 
+        case 2:
+            mouse.addvar = mouse.addvar * 5;
+            points = points - powerCost.mouse2;
+            break;
+
+        case 3:
+            mouse.addvar = mouse.addvar * 10;
+            points = points - powerCost.mouse3;
+            break;
+
+        case 4:
+            mouse.addvar = mouse.addvar * 20;
+            points = points - powerCost.mouse4;
+            break;
+
+        //factory upgrade
+        case 5:
+            factory.addvar = factory.addvar * 2;
+            points = points - powerCost.factory1;
+            break;
+
+        case 6:
+            factory.addvar = factory.addvar * 5;
+            points = points - powerCost.factory2;
+            break;
+
+        case 7:
+            factory.addvar = factory.addvar * 10;
+            points = points - powerCost.factory3;
+            break;
+
+        case 8:
+            factory.addvar = factory.addvar * 20;
+            points = points - powerCost.factory4;
+            break;
+
+        //factoryV2 upgrade
+
+        case 9:
+            factoryV2.addvar = factoryV2.addvar * 2;
+            points = points - powerCost.factoryV21;
+            break;
+
+        case 10:
+            factoryV2.addvar = factoryV2.addvar * 5;
+            points = points - powerCost.factoryV22;
+            break;
+
+        case 11:
+            factoryV2.addvar = factoryV2.addvar * 10;
+            points = points - powerCost.factoryV23;
+            break;
+
+        case 12:
+            factoryV2.addvar = factoryV2.addvar * 20;
+            points = points - powerCost.factoryV24;
+            break;
+
+        //bank upgrade
+
+        case 13:
+            bank.addvar = bank.addvar * 2;
+            points = points - powerCost.bank1;
+            break;
+
+        case 14:
+            bank.addvar = bank.addvar * 5;
+            points = points - powerCost.bank2;
+            break;
+
+        case 15:
+            bank.addvar = bank.addvar * 10;
+            points = points - powerCost.bank3;
+            break;
+
+        case 16:
+            bank.addvar = bank.addvar * 20;
+            points = points - powerCost.bank4;
+            break;
+    }
+}
 
 function multipleMousePrice() {
     mouse.modified = mouse.cost;
@@ -219,6 +331,205 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
     }
     else {
         document.getElementById('100x').style.backgroundColor = "gray";
+    }
+    //upgrades
+    if (points >= powerCost.mouse1) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('mouseupg1').style.opacity = "1";
+        document.getElementById('mouseupg1').style.pointerEvents = "auto"
+        document.getElementById('mouseupg1').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('mouseupg1').style.opacity = "0.3";
+        document.getElementById('mouseupg1').style.pointerEvents = "none"
+        document.getElementById('mouseupg1').style.cursor = "url";
+    }
+    if (points >= powerCost.mouse2) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('mouseupg2').style.opacity = "1";
+        document.getElementById('mouseupg2').style.pointerEvents = "auto"
+        document.getElementById('mouseupg2').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('mouseupg2').style.opacity = "0.3";
+        document.getElementById('mouseupg2').style.pointerEvents = "none"
+        document.getElementById('mouseupg2').style.cursor = "url";
+    }
+    if (points >= powerCost.mouse3) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('mouseupg3').style.opacity = "1";
+        document.getElementById('mouseupg3').style.pointerEvents = "auto"
+        document.getElementById('mouseupg3').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('mouseupg3').style.opacity = "0.3";
+        document.getElementById('mouseupg3').style.pointerEvents = "none"
+        document.getElementById('mouseupg3').style.cursor = "url";
+    }
+    if (points >= powerCost.mouse4) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('mouseupg4').style.opacity = "1";
+        document.getElementById('mouseupg4').style.pointerEvents = "auto"
+        document.getElementById('mouseupg4').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('mouseupg4').style.opacity = "0.3";
+        document.getElementById('mouseupg4').style.pointerEvents = "none"
+        document.getElementById('mouseupg4').style.cursor = "url";
+    }
+    if (points >= powerCost.factory1) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('factoryupg1').style.opacity = "1";
+        document.getElementById('factoryupg1').style.pointerEvents = "auto"
+        document.getElementById('factoryupg1').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('factoryupg1').style.opacity = "0.3";
+        document.getElementById('factoryupg1').style.pointerEvents = "none"
+        document.getElementById('factoryupg1').style.cursor = "url";
+    }
+    if (points >= powerCost.factory2) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('factoryupg2').style.opacity = "1";
+        document.getElementById('factoryupg2').style.pointerEvents = "auto"
+        document.getElementById('factoryupg2').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('factoryupg2').style.opacity = "0.3";
+        document.getElementById('factoryupg2').style.pointerEvents = "none"
+        document.getElementById('factoryupg2').style.cursor = "url";
+    }
+    if (points >= powerCost.factory3) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('factoryupg3').style.opacity = "1";
+        document.getElementById('factoryupg3').style.pointerEvents = "auto"
+        document.getElementById('factoryupg3').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('factoryupg3').style.opacity = "0.3";
+        document.getElementById('factoryupg3').style.pointerEvents = "none"
+        document.getElementById('factoryupg3').style.cursor = "url";
+    }
+    if (points >= powerCost.factory4) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('factoryupg4').style.opacity = "1";
+        document.getElementById('factoryupg4').style.pointerEvents = "auto"
+        document.getElementById('factoryupg4').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('factoryupg4').style.opacity = "0.3";
+        document.getElementById('factoryupg4').style.pointerEvents = "none"
+        document.getElementById('factoryupg4').style.cursor = "url";
+    }
+    if (points >= powerCost.factoryV21) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('v2upg1').style.opacity = "1";
+        document.getElementById('v2upg1').style.pointerEvents = "auto"
+        document.getElementById('v2upg1').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('v2upg1').style.opacity = "0.3";
+        document.getElementById('v2upg1').style.pointerEvents = "none"
+        document.getElementById('v2upg1').style.cursor = "url";
+    }
+    if (points >= powerCost.factoryV22) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('v2upg2').style.opacity = "1";
+        document.getElementById('v2upg2').style.pointerEvents = "auto"
+        document.getElementById('v2upg2').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('v2upg2').style.opacity = "0.3";
+        document.getElementById('v2upg2').style.pointerEvents = "none"
+        document.getElementById('v2upg2').style.cursor = "url";
+    }
+    if (points >= powerCost.factoryV23) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('v2upg3').style.opacity = "1";
+        document.getElementById('v2upg3').style.pointerEvents = "auto"
+        document.getElementById('v2upg3').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('v2upg3').style.opacity = "0.3";
+        document.getElementById('v2upg3').style.pointerEvents = "none"
+        document.getElementById('v2upg3').style.cursor = "url";
+    }
+    if (points >= powerCost.factoryV24) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('v2upg4').style.opacity = "1";
+        document.getElementById('v2upg4').style.pointerEvents = "auto"
+        document.getElementById('v2upg4').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('v2upg4').style.opacity = "0.3";
+        document.getElementById('v2upg4').style.pointerEvents = "none"
+        document.getElementById('v2upg4').style.cursor = "url";
+    }
+    if (points >= powerCost.bank1) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('bankupg1').style.opacity = "1";
+        document.getElementById('bankupg1').style.pointerEvents = "auto"
+        document.getElementById('bankupg1').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('bankupg1').style.opacity = "0.3";
+        document.getElementById('bankupg1').style.pointerEvents = "none"
+        document.getElementById('bankupg1').style.cursor = "url";
+    }
+    if (points >= powerCost.bank2) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('bankupg2').style.opacity = "1";
+        document.getElementById('bankupg2').style.pointerEvents = "auto"
+        document.getElementById('bankupg2').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('bankupg2').style.opacity = "0.3";
+        document.getElementById('bankupg2').style.pointerEvents = "none"
+        document.getElementById('bankupg2').style.cursor = "url";
+    }
+    if (points >= powerCost.bank3) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('bankupg3').style.opacity = "1";
+        document.getElementById('bankupg3').style.pointerEvents = "auto"
+        document.getElementById('bankupg3').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('bankupg3').style.opacity = "0.3";
+        document.getElementById('bankupg3').style.pointerEvents = "none"
+        document.getElementById('bankupg3').style.cursor = "url";
+    }
+    if (points >= powerCost.bank4) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('bankupg4').style.opacity = "1";
+        document.getElementById('bankupg4').style.pointerEvents = "auto"
+        document.getElementById('bankupg4').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('bankupg4').style.opacity = "0.3";
+        document.getElementById('bankupg4').style.pointerEvents = "none"
+        document.getElementById('bankupg4').style.cursor = "url";
+    }
+    if (points >= powerCost.bank1) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('bankupg1').style.opacity = "1";
+        document.getElementById('bankupg1').style.pointerEvents = "auto"
+        document.getElementById('bankupg1').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('bankupg1').style.opacity = "0.3";
+        document.getElementById('bankupg1').style.pointerEvents = "none"
+        document.getElementById('bankupg1').style.cursor = "url";
+    }
+    if (points >= powerCost.win) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
+        document.getElementById('winupg').style.opacity = "1";
+        document.getElementById('winupg').style.pointerEvents = "auto"
+        document.getElementById('winupg').style.cursor = "pointer";
+
+    }
+    else {
+        document.getElementById('winupg').style.opacity = "0.3";
+        document.getElementById('winupg').style.pointerEvents = "none"
+        document.getElementById('winupg').style.cursor = "url";
     }
     multipleMousePrice();
     multipleFactoryPrice();
