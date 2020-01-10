@@ -90,24 +90,48 @@ function choosePower(power) {
             mouse.addvar = mouse.addvar * 2;
             points = points - powerCost.mouse1;
             powerBought.mouse1 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         case 2:
             mouse.addvar = mouse.addvar * 5;
             points = points - powerCost.mouse2;
             powerBought.mouse2 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         case 3:
             mouse.addvar = mouse.addvar * 10;
             points = points - powerCost.mouse3;
             powerBought.mouse3 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         case 4:
             mouse.addvar = mouse.addvar * 20;
             points = points - powerCost.mouse4;
             powerBought.mouse4 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         //factory upgrade
@@ -115,24 +139,48 @@ function choosePower(power) {
             factory.addvar = factory.addvar * 2;
             points = points - powerCost.factory1;
             powerBought.factory1 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         case 6:
             factory.addvar = factory.addvar * 5;
             points = points - powerCost.factory2;
             powerBought.factory2 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         case 7:
             factory.addvar = factory.addvar * 10;
             points = points - powerCost.factory3;
             powerBought.factory3 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         case 8:
             factory.addvar = factory.addvar * 20;
             points = points - powerCost.factory4;
             powerBought.factory4 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         //factoryV2 upgrade
@@ -141,24 +189,48 @@ function choosePower(power) {
             factoryV2.addvar = factoryV2.addvar * 2;
             points = points - powerCost.factoryV21;
             powerBought.factoryV21 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         case 10:
             factoryV2.addvar = factoryV2.addvar * 5;
             points = points - powerCost.factoryV22;
             powerBought.factoryV22 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         case 11:
             factoryV2.addvar = factoryV2.addvar * 10;
             points = points - powerCost.factoryV23;
             powerBought.factoryV23 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         case 12:
             factoryV2.addvar = factoryV2.addvar * 20;
             points = points - powerCost.factoryV24;
             powerBought.factoryV24 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         //bank upgrade
@@ -167,28 +239,58 @@ function choosePower(power) {
             bank.addvar = bank.addvar * 2;
             points = points - powerCost.bank1;
             powerBought.bank1 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         case 14:
             bank.addvar = bank.addvar * 5;
             points = points - powerCost.bank2;
             powerBought.bank2 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         case 15:
             bank.addvar = bank.addvar * 10;
             points = points - powerCost.bank3;
             powerBought.bank3 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
 
         case 16:
             bank.addvar = bank.addvar * 20;
             points = points - powerCost.bank4;
             powerBought.bank4 = 1;
+            if (document.getElementById('upgAudio').paused) {
+                document.getElementById('upgAudio').play();
+            }
+            else {
+                document.getElementById('upgAudio').currentTime = 0;
+            }
             break;
         
         case 17:
             powerBought.win = 1;
+            if (document.getElementById('winAudio').paused) {
+                document.getElementById('winAudio').play();
+            }
+            else {
+                document.getElementById('winAudio').currentTime = 0;
+            }
     }
 }
 
@@ -268,6 +370,12 @@ function addFactoriesV2() {               // Lägger till fabrikV2, tar bort kos
     factoryV2.cost = factoryV2.modified;
     factoryV2.count = factoryV2.count + howmany;
     points = points - factoryV2.cost;
+    if (document.getElementById('mineAudio').paused) {
+        document.getElementById('mineAudio').play();
+    }
+    else {
+        document.getElementById('mineAudio').currentTime = 0;
+    }
 }
 
 function addBanks() {                   // Lägger till bank, tar bort kostnad från totala poäng och höjer kostnad.
