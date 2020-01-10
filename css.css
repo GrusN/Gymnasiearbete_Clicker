@@ -87,14 +87,14 @@ top: 10px;
 }
 #signature {
     position: absolute;
-    font-size:10px;
-    top: 95%;
+    font-size:8px;
+    top: 96%;
     left: 90%;
 }
 #upgtitle {
     position: absolute;
-    top:350px;
-    left: 830px;
+    top:348px;
+    left: 805px;
     font-size: 40px;
 }
 #upgcontainer {
@@ -174,8 +174,12 @@ top: 10px;
 position: absolute;
 top:0px;
 left:0px;
-width:1300px;
-height:600px;
+width:1326px;
+height:635px;
 visibility: hidden;
-background-color: ghostwhite;
+background-image: url("win.gif");
+background-position: top;
+font-family: 'Nova Square', cursive;
+font-size: 20px;
+cursor: pointer;
 }

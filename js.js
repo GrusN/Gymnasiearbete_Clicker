@@ -307,7 +307,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('buyfactory').style.cursor = "pointer";
     }
     else {
-        document.getElementById('buyfactory').style.opacity = "0.3";
+        document.getElementById('buyfactory').style.opacity = "0.5";
         document.getElementById('buyfactory').style.pointerEvents = "none"
         document.getElementById('buyfactory').style.cursor = "url";
 
