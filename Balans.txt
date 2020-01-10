@@ -1,0 +1,54 @@
+TEST 1
+let powerCost = {
+    //mouse
+    mouse1: 5000,
+    mouse2: 50000,
+    mouse3: 500000,
+    mouse4: 5000000,
+    //factory
+    factory1: 30000,
+    factory2: 140000,
+    factory3: 600000,
+    factory4: 2800000,
+    //factoryV2
+    factoryV21: 50000,
+    factoryV22: 200000,
+    factoryV23: 800000,
+    factoryV24: 4000000,
+    //bank
+    bank1: 100000,
+    bank2: 400000,
+    bank3: 1920000,
+    bank4: 9600000,
+    win: 1000000000
+
+    Tid: 9 m 30 sek
+    Slutsats: blir op vid x10, måste vara mycket dyrare
+
+TEST 2
+let powerCost = {
+    //mouse
+    mouse1: 5000,
+    mouse2: 50000,
+    mouse3: 1000000,
+    mouse4: 50000000,
+    //factory
+    factory1: 30000,
+    factory2: 140000,
+    factory3: 2000000,
+    factory4: 200000000,
+    //factoryV2
+    factoryV21: 50000,
+    factoryV22: 200000,
+    factoryV23: 5000000,
+    factoryV24: 500000000,
+    //bank
+    bank1: 100000,
+    bank2: 400000,
+    bank3: 10000000,
+    bank4: 1000000000,
+    win: 10000000000
+}
+
+Tid: 40 m 24 sek
+Slutsats: Jag är nöjd med tiden
