@@ -295,10 +295,10 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
     document.getElementById('totalfactories').innerText = "Factories: " + factory.count;
     document.getElementById('totalfactoriesV2').innerText = "Mines: " + factoryV2.count;
     document.getElementById('totalbanks').innerText = "Banks: " + bank.count;
-    document.getElementById('mousecost').innerText = "Mouse Cost:   " + mouse.modified;
+    document.getElementById('mousecost').innerText = "Mouse Cost--: " + mouse.modified;
     document.getElementById('costfactory').innerText = "Factory cost: " + factory.modified;
-    document.getElementById('costfactoryV2').innerText = "Mine cost:    " + factoryV2.modified;
-    document.getElementById('costbanks').innerText = "Bank cost:    " + bank.modified;
+    document.getElementById('costfactoryV2').innerText = "Mine cost---: " + factoryV2.modified;
+    document.getElementById('costbanks').innerText = "Bank cost---: " + bank.modified;
 
 
     if (points >= factory.modified) {                             //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd att köpa en fabrik.
