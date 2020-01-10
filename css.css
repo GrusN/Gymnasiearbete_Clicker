@@ -6,6 +6,7 @@ body {
        -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Chrome/Opera */
+    font-family: 'Roboto Mono', monospace;
 }
 .button { width: 200px;
     height: 100px;
@@ -14,10 +15,16 @@ body {
     border: solid black 1px;
     box-shadow: 2px 5px;
     outline: none;
+    font-family: 'Roboto Mono', monospace;
 }
 .button:active {
     box-shadow: 1px 2px;
     transform: translatey(3px) translatex(1px);
+}
+.smallbuttons {
+position: absolute;
+left: 1050px;
+top: 10px;
 }
 .smallbutton {
     width: 50px;
@@ -26,6 +33,7 @@ body {
     border:solid black 1px;
     box-shadow: 2px 5px;
     outline: none;
+    font-family: 'Roboto Mono', monospace;
 }
 .smallbutton:active {
     box-shadow: 1px 2px;
@@ -33,15 +41,18 @@ body {
 }
 #infobox {
     position:absolute;
-    top: 150px;
+    top: 180px;
     border: 1px solid black;
     width: 500px;
 }
 #infotitle {
-    font-size: 20px;
+    font-size: 40px;
+    position: absolute;
+    top:95px;
+    
 }
 #total {
-    font-size: 30px;
+    font-size: 25px;
 }
 .mouse {
     color: rgb(128, 199, 48);
@@ -78,7 +89,7 @@ body {
     position: absolute;
     font-size:10px;
     top: 95%;
-    left: 93%;
+    left: 90%;
 }
 #upgtitle {
     position: absolute;
@@ -104,6 +115,7 @@ body {
     border:1px solid black;
     outline: none;
     cursor: pointer;
+    font-family: 'Roboto Mono', monospace;
 }
 #mouseupg1{
     background-color:rgb(128, 199, 48);
@@ -157,4 +169,13 @@ body {
 }
 #winupg {
     background-color: deeppink;
+}
+#winscreen {
+position: absolute;
+top:0px;
+left:0px;
+width:1300px;
+height:600px;
+visibility: hidden;
+background-color: ghostwhite;
 }

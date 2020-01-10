@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="css.css">
     <script type="text/javascript" src="js.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|VT323&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
     </audio>
     <!--BUTTONS-->
     <button class="button" onClick="pointClick()"> Click me</button>
-    <button class="button" id='upgrademouse' onClick="upgradeMouse()">Upgrade your mouse</button>
+    <button class="button" id='upgrademouse' onClick="upgradeMouse()">Buy Another Mouse</button>
     <button class="button" id='buyfactory' onClick="addFactories()">Buy A Factory</button>
     <button class="button" id='buyfactoryV2' onClick="addFactoriesV2()">?</button>
     <button class="button" id='buybank' onClick="addBanks()">??</button>
@@ -38,38 +39,39 @@
     </div>
     <div id="upgtitle">Upgrades</div>
     <div id="upgcontainer">
-        <button class="upg" id="mouseupg1" onclick="choosePower(1)">Mouse1</button>
-        <button class="upg" id="factoryupg1" onclick="choosePower(5)">Factory1</button>
-        <button class="upg" id="v2upg1" onclick="choosePower(9)">V2 1</button>
-        <button class="upg" id="bankupg1" onclick="choosePower(12)">Bank1</button>
-        <button class="upg" id="mouseupg2" onclick="choosePower(2)">Mouse2</button>
-        <button class="upg" id="factoryupg2" onclick="choosePower(6)">Factory2</button>
-        <button class="upg" id="v2upg2" onclick="choosePower(9)">V2 2</button>
-        <button class="upg" id="bankupg2" onclick="choosePower(13)">Bank2</button>
-        <button class="upg" id="mouseupg3" onclick="choosePower(3)">Mouse3</button>
-        <button class="upg" id="factoryupg3" onclick="choosePower(7)">Factory3</button>
-        <button class="upg" id="v2upg3" onclick="choosePower(10)">V2 3</button>
-        <button class="upg" id="bankupg3" onclick="choosePower(14)">Bank3</button>
-        <button class="upg" id="mouseupg4" onclick="choosePower(4)">Mouse4</button>
-        <button class="upg" id="factoryupg4" onclick="choosePower(8)">Factory4</button>
-        <button class="upg" id="v2upg4" onclick="choosePower(11)">V2 4</button>
-        <button class="upg" id="bankupg4" onclick="choosePower(15)">Bank 4</button>
-        <button class="upg" id="winupg" style="flex-grow:3;">World peace!</button>
+        <button class="upg" id="mouseupg1" onclick="choosePower(1)">?</button>
+        <button class="upg" id="factoryupg1" onclick="choosePower(5)">?</button>
+        <button class="upg" id="v2upg1" onclick="choosePower(9)">?</button>
+        <button class="upg" id="bankupg1" onclick="choosePower(13)">?</button>
+        <button class="upg" id="mouseupg2" onclick="choosePower(2)">??</button>
+        <button class="upg" id="factoryupg2" onclick="choosePower(6)">??</button>
+        <button class="upg" id="v2upg2" onclick="choosePower(10)">??</button>
+        <button class="upg" id="bankupg2" onclick="choosePower(14)">??</button>
+        <button class="upg" id="mouseupg3" onclick="choosePower(3)">???</button>
+        <button class="upg" id="factoryupg3" onclick="choosePower(7)">???</button>
+        <button class="upg" id="v2upg3" onclick="choosePower(11)">???</button>
+        <button class="upg" id="bankupg3" onclick="choosePower(15)">???</button>
+        <button class="upg" id="mouseupg4" onclick="choosePower(4)">????</button>
+        <button class="upg" id="factoryupg4" onclick="choosePower(8)">????</button>
+        <button class="upg" id="v2upg4" onclick="choosePower(12)">????</button>
+        <button class="upg" id="bankupg4" onclick="choosePower(16)">????</button>
+        <button class="upg" id="winupg" style="flex-grow:3;" onclick="choosePower(17)">World peace!</button>
     </div>
     <!--TEXT-->
+    <p id="infotitle">Info</p>
     <div id="infobox">
-        <p id="infotitle">Info</p>
         <p id="total">NaN</p>
         <p class="mouse" id="ppc">NaN</p>
-        <p class="mouse" id="mousecost">NaN</p>
         <p class="factory" id="totalfactories">NaN</p>
-        <p class="factory" id="costfactory">NaN</p>
         <p class="factoryV2" id="totalfactoriesV2">NaN</p>
-        <p class="factoryV2" id="costfactoryV2">NaN</p>
         <p class="bank" id="totalbanks">NaN</p>
+        <p class="mouse" id="mousecost">NaN</p>
+        <p class="factory" id="costfactory">NaN</p>
+        <p class="factoryV2" id="costfactoryV2">NaN</p>
         <p class="bank" id="costbanks">NaN</p>
     </div>
     <p id="signature">Made by Lil Audem and Grus!</p>
+    <a href="http://127.0.0.1:5500/html.html" id="winscreen">CONGRATULATIONS! YOU HAVE PAID OFF THE ALIENS AND ACHIEVED WORLD PEACE, EARTH IS FOREVER IN YOUR DEBT. PRESS THIS BUTTON TO ERASE YOUR MEMORY.</a href="http://127.0.0.1:5500/html.html">
 </body>
 
 </html>
