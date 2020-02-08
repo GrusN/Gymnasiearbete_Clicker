@@ -1,25 +1,25 @@
 *DONE!* köp 1/10/100, knappar blir röda beroende på om man har råd med 1/10/100 
 
 
-Mer fabriker v.43
+Mer fabriker v.43 **DONE**
 
-Tool tip v. 45
+Tool tip v. 45  **DONE**
 
 Upgrades v.47
-Funktion som visar fabriker/upgrades beroende på hur långt man kommit.
+Funktion som visar fabriker/upgrades beroende på hur långt man kommit. **DONE**
 
-Handling/mål
+Handling/mål **DONE**
 
-Sparfunktion
+Sparfunktion --CUT--
 
-Font (lisa säger att vi måste)
+Font (lisa säger att vi måste) **DONE**
 
-Balansera spelet
+Balansera spelet  **DONE**
 
 Ska vara klart t jul lovet
 
 Efter lovet
-  l
+  |
   v
 Hosta
 
