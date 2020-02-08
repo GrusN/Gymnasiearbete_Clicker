@@ -79,6 +79,34 @@ let powerBought = {
     win: 0
 }
 
+let hide = 1;
+let hideTrueFalse = false;
+
+function hideTool() {
+    hide++;
+    if (hide % 2 == 0) {
+        hideTrueFalse = true;
+    } else {
+        hideTrueFalse = false;
+    }
+
+}
+
+function ppcTool() {
+    document.getElementById("toolH2").innerHTML = "Points per click";
+    document.getElementById("toolP").innerHTML = "Click to make the mouse get more points per click";
+}
+
+function ppsTool() {
+    document.getElementById("toolH2").innerHTML = "Points per secund";
+    document.getElementById("toolP").innerHTML = "Click to get points per secund";
+}
+
+function toolX() {
+    document.getElementById("toolH2").innerHTML = "1x/10x/100x";
+    document.getElementById("toolP").innerHTML = "allows you to buy 1, 10 or 100 pps and ppc at once";
+}
+
 function howMany(number) {              // Ändrar värdet på howmany till det nummer som skickas från knappar.
     howmany = number;
 }
@@ -282,7 +310,7 @@ function choosePower(power) {
                 document.getElementById('upgAudio').currentTime = 0;
             }
             break;
-        
+
         case 17:
             powerBought.win = 1;
             if (document.getElementById('winAudio').paused) {
@@ -839,6 +867,29 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
     if (powerBought.win == 1) {
         document.getElementById('winscreen').style.visibility = "visible";
     }
+
+    if (hideTrueFalse == false) {
+        document.getElementById("tooltipRam").style.visibility = "visible";
+        document.getElementById("tooltipInneRam").style.visibility = "visible";
+        document.getElementById("toolHead").style.visibility = "visible";
+        document.getElementById("toolPpc").style.visibility = "visible";
+        document.getElementById("toolPps").style.visibility = "visible";
+        document.getElementById("toolX").style.visibility = "visible";
+        document.getElementById("toolH2").style.visibility = "visible";
+        document.getElementById("toolP").style.visibility = "visible";
+
+    } else {
+        document.getElementById("tooltipRam").style.visibility = "hidden";
+        document.getElementById("tooltipInneRam").style.visibility = "hidden";
+        document.getElementById("toolHead").style.visibility = "hidden";
+        document.getElementById("toolPpc").style.visibility = "hidden";
+        document.getElementById("toolPps").style.visibility = "hidden";
+        document.getElementById("toolX").style.visibility = "hidden";
+        document.getElementById("toolH2").style.visibility = "hidden";
+        document.getElementById("toolP").style.visibility = "hidden";
+
+    }
+
     multipleMousePrice();
     multipleFactoryPrice();
     multipleFactoryV2Price();
