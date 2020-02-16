@@ -80,14 +80,14 @@ let powerBought = {
 }
 
 let hide = 1;
-let hideTrueFalse = false;
+let hideTrueFalse = true;
 
 function hideTool() {
     hide++;
     if (hide % 2 == 0) {
-        hideTrueFalse = true;
-    } else {
         hideTrueFalse = false;
+    } else {
+        hideTrueFalse = true;
     }
 
 }
@@ -877,6 +877,8 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById("toolX").style.visibility = "visible";
         document.getElementById("toolH2").style.visibility = "visible";
         document.getElementById("toolP").style.visibility = "visible";
+        document.getElementById("toolHide").style.backgroundColor = "red";
+        document.getElementById("toolHide").innerHTML = "Close tool tips";
 
     } else {
         document.getElementById("tooltipRam").style.visibility = "hidden";
@@ -887,6 +889,10 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById("toolX").style.visibility = "hidden";
         document.getElementById("toolH2").style.visibility = "hidden";
         document.getElementById("toolP").style.visibility = "hidden";
+        document.getElementById("toolHide").style.backgroundColor = "rgb(128, 199, 48)";
+        document.getElementById("toolHide").innerHTML = "Tool Tips";
+        document.getElementById("toolH2").innerHTML = "";
+        document.getElementById("toolP").innerHTML = "";
 
     }
 
