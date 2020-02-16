@@ -87,15 +87,15 @@ top: 10px;
 }
 #toolHide{
     position: absolute;
-    width: 25px;
+    width: 171px;
     height: 25px;
     background-color: red;
     border:solid black 1px;
     box-shadow: 2px 5px;
     outline: none;
     font-family: 'Roboto Mono', monospace;
-    top: 17%;
-    left: 82%;
+    top: 7%;
+    left: 76.9%;
 }
 #tooltipRam{
     position: absolute;
@@ -103,7 +103,7 @@ top: 10px;
     width: 400px;
     height: 35%;
     left: 700px;
-    top: 22%;
+    top: 19%;
 }
 #tooltipInneRam{
     position: absolute;
