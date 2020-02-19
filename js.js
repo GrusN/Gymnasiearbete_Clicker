@@ -79,6 +79,10 @@ let powerBought = {
     win: 0
 }
 
+function reload() {
+    location.reload();
+}
+
 let hide = 1;
 let hideTrueFalse = true;
 
