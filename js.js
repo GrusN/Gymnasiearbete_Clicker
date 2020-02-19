@@ -93,18 +93,18 @@ function hideTool() {
 }
 
 function ppcTool() {
-    document.getElementById("toolH2").innerHTML = "Points per click";
-    document.getElementById("toolP").innerHTML = "Click to make the mouse get more points per click";
+    document.getElementById("toolH2").innerHTML = "Buying mouse";
+    document.getElementById("toolP").innerHTML = "Buy to make the mouse get more points per click";
 }
 
 function ppsTool() {
-    document.getElementById("toolH2").innerHTML = "Points per secund";
-    document.getElementById("toolP").innerHTML = "Click to get points per secund";
+    document.getElementById("toolH2").innerHTML = "Buying buildings";
+    document.getElementById("toolP").innerHTML = "Buy to get more points every second";
 }
 
 function toolX() {
     document.getElementById("toolH2").innerHTML = "1x/10x/100x";
-    document.getElementById("toolP").innerHTML = "allows you to buy 1, 10 or 100 pps and ppc at once";
+    document.getElementById("toolP").innerHTML = "Allows you to buy 1, 10 or 100 mice and buildings at once";
 }
 
 function howMany(number) {              // Ändrar värdet på howmany till det nummer som skickas från knappar.
