@@ -1,13 +1,16 @@
-alert("Aliens have waged war on earth! The only way to restore world peace is to pay them off, but no person on earth has enough money! You have been given a mission, as the worlds greatest entrepeneur, to make enough money to pay the aliens. The fate of earth rests on your shoulders, good luck.");
+alert("Aliens have waged war on earth! The only way to restore world peace is to pay them off, but no person on earth has enough money! You have been given a mission, as the worlds greatest entrepeneur, to make enough money to pay the aliens. The fate of earth rests on your shoulders, good luck."); //Textruta som dyker upp när sidan laddas, introduktion till spelets handling
 let points = 0;                          // Poäng
+
 let howmany = 1;                        // Värde som ändras mellan 1, 10 och 100 beroende på vilken knapp man valt.
+
 let mouse = {
-    count: 0,                            // Antal
-    cost: 3,                            // Kostnad
+    count: 0,                           // Antal
+    cost: 3,                            // Grundkostnad
     addvar: 1,                          // Hur många poäng per antal
-    inflation: 1.5,                      // HUr mycket priset ökar per köp
-    modified: 0
+    inflation: 1.5,                     // Hur mycket priset ökar per köp
+    modified: 0                         // Kostnad för nästa köp (räknas ut innan köp)
 }
+
 let factory = {
     count: 0,
     cost: 90,
@@ -15,6 +18,7 @@ let factory = {
     inflation: 1.1,
     modified: 0
 }
+
 let factoryV2 = {
     count: 0,
     cost: 909,
@@ -52,6 +56,7 @@ let powerCost = {
     bank2: 400000,
     bank3: 10000000,
     bank4: 1000000000,
+    //sista uppgradering
     win: 10000000000
 }
 
@@ -79,14 +84,15 @@ let powerBought = {
     win: 0
 }
 
-function reload() {
+let hide = 1;                       //Används till funktionen hideTool()
+
+let hideTrueFalse = true;           //Används till funktionen hideTool()
+
+function reload() {                 // Laddar om sidan
     location.reload();
 }
 
-let hide = 1;
-let hideTrueFalse = true;
-
-function hideTool() {
+function hideTool() {               //Används för att gömma/visa ToolTips-rutan
     hide++;
     if (hide % 2 == 0) {
         hideTrueFalse = false;
@@ -96,26 +102,26 @@ function hideTool() {
 
 }
 
-function ppcTool() {
+function ppcTool() {                // Används för att visa specifik information i Tooltips-rutan
     document.getElementById("toolH2").innerHTML = "Buying mouse";
     document.getElementById("toolP").innerHTML = "Buy to make the mouse get more points per click";
 }
 
-function ppsTool() {
+function ppsTool() {               // Används för att visa specifik information i Tooltips-rutan
     document.getElementById("toolH2").innerHTML = "Buying buildings";
     document.getElementById("toolP").innerHTML = "Buy to get more points every second";
 }
 
-function toolX() {
+function toolX() {                // Används för att visa specifik information i Tooltips-rutan
     document.getElementById("toolH2").innerHTML = "1x/10x/100x";
     document.getElementById("toolP").innerHTML = "Allows you to buy 1, 10 or 100 mice and buildings at once";
 }
 
-function howMany(number) {              // Ändrar värdet på howmany till det nummer som skickas från knappar.
+function howMany(number) {              // Ändrar värdet på howmany till det nummer som skickas från knapparna x1/x10/x100
     howmany = number;
 }
 
-function choosePower(power) {
+function choosePower(power) {           //Väljer vilken upppgradering som ska köpas beroende på vilken knapp som klickas och köper den
     switch (power) {
         //mus upgrade
         case 1:
@@ -326,7 +332,7 @@ function choosePower(power) {
     }
 }
 
-function multipleMousePrice() {
+function multipleMousePrice() {                             // Räknar ut kostnaden av att upgradera musen innan köp
     mouse.modified = mouse.cost;
     for (let i = 1; i <= howmany; i++) {
         mouse.modified = mouse.modified * mouse.inflation;
@@ -334,7 +340,7 @@ function multipleMousePrice() {
     }
 }
 
-function multipleFactoryPrice() {
+function multipleFactoryPrice() {                           // Räknar ut kostnaden av att köpa Factory innan köp
     factory.modified = factory.cost;
     for (let i = 1; i <= howmany; i++) {
         factory.modified = factory.modified * factory.inflation;
@@ -342,7 +348,7 @@ function multipleFactoryPrice() {
     }
 }
 
-function multipleFactoryV2Price() {
+function multipleFactoryV2Price() {                         // Räknar ut kostnaden av att köpa Mine innan köp
     factoryV2.modified = factoryV2.cost;
     for (let i = 1; i <= howmany; i++) {
         factoryV2.modified = factoryV2.modified * factoryV2.inflation;
@@ -350,7 +356,7 @@ function multipleFactoryV2Price() {
     }
 }
 
-function multipleBankPrice() {
+function multipleBankPrice() {                              // Räknar ut kostnaden av att köpa Bank innan köp
     bank.modified = bank.cost;
     for (let i = 1; i <= howmany; i++) {
         bank.modified = bank.modified * bank.inflation;
@@ -358,11 +364,7 @@ function multipleBankPrice() {
     }
 }
 
-function givePoints(amount) {           //Cheat vi kan använda för att testa om saker funkar utan att behöva klicka en massa
-    points = points + amount;
-}
-
-function pointClick() {                  // Lägger till poäng per klick
+function pointClick() {                                     // Lägger till poäng per klick samt spelar ljud
     points = points + mouse.addvar;
     if (document.getElementById('myAudio').paused) {
         document.getElementById('myAudio').play();
@@ -372,7 +374,7 @@ function pointClick() {                  // Lägger till poäng per klick
     }
 };
 
-function upgradeMouse() {                //Uppgraderar musen, tar bort kostnad från totala points och höjer kostnad.
+function upgradeMouse() {                                   //Uppgraderar musen, drar kostnaden från points samt spelar ljud
     mouse.cost = mouse.modified;
     mouse.count = mouse.count + howmany;
     points = points - mouse.cost;
@@ -385,7 +387,7 @@ function upgradeMouse() {                //Uppgraderar musen, tar bort kostnad f
     }
 }
 
-function addFactories() {               // Lägger till fabrik, tar bort kostnad från totala poäng och höjer kostnad.
+function addFactories() {                                 // Lägger till fabrik, tar bort kostnaden från points samt spelar ljud
     factory.cost = factory.modified;
     factory.count = factory.count + howmany;
     points = points - factory.cost;
@@ -398,7 +400,7 @@ function addFactories() {               // Lägger till fabrik, tar bort kostnad
 
 }
 
-function addFactoriesV2() {               // Lägger till fabrikV2, tar bort kostnad från totala poäng och höjer kostnad.
+function addFactoriesV2() {                              // Lägger till Mine, tar bort kostnaden från points samt spelar ljud
     factoryV2.cost = factoryV2.modified;
     factoryV2.count = factoryV2.count + howmany;
     points = points - factoryV2.cost;
@@ -410,7 +412,7 @@ function addFactoriesV2() {               // Lägger till fabrikV2, tar bort kos
     }
 }
 
-function addBanks() {                   // Lägger till bank, tar bort kostnad från totala poäng och höjer kostnad.
+function addBanks() {                                   // Lägger till Bank, tar bort kostnaden från points samt spelar ljud
     bank.cost = bank.modified;
     bank.count = bank.count + howmany;
     points = points - bank.cost;
@@ -426,8 +428,7 @@ window.setInterval(function () {          // Lägger till poäng från fabriker 
     points = points + (factory.addvar * factory.count) + (factoryV2.addvar * factoryV2.count) + (bank.addvar * bank.count);
 }, 1000);
 
-
-window.setInterval(function () {          //Allt inom kodblocket körs varje millisekund
+window.setInterval(function () {          //Allt inom detta kodblock körs varje millisekund
     pps = (factory.addvar * factory.count) + (factoryV2.addvar * factoryV2.count) + (bank.addvar * bank.count);      //Räknar ut hur många poäng som läggs till per sekund av fabrikerna
     points = Math.ceil(points);                             //Avrundar points till heltal
     document.getElementById('total').innerText = "Points: " + points + " (" + pps + " per second)";
@@ -439,7 +440,6 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
     document.getElementById('costfactory').innerText = "Factory cost: " + factory.modified;
     document.getElementById('costfactoryV2').innerText = "Mine cost---: " + factoryV2.modified;
     document.getElementById('costbanks').innerText = "Bank cost---: " + bank.modified;
-
 
     if (points >= factory.modified) {                             //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd att köpa en fabrik.
         document.getElementById('buyfactory').style.opacity = "1";
@@ -464,11 +464,13 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('buyfactoryV2').style.cursor = "url";
 
     }
-    if (points >= factory.cost) {                          // Gör factoryV2 synlig när man har råd med den
+
+    if (points >= factory.cost) {                                   // Gör Factory synlig när man har råd med den
         document.getElementById('totalfactories').style.visibility = "visible";
         document.getElementById('costfactory').style.visibility = "visible";
         document.getElementById('buyfactory').innerHTML = "Buy A Factory";
     }
+
     if (points >= mouse.modified) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd att uppgradera musen.
         document.getElementById('upgrademouse').style.opacity = "1";
         document.getElementById('upgrademouse').style.pointerEvents = "auto"
@@ -480,7 +482,8 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('upgrademouse').style.pointerEvents = "none"
         document.getElementById('upgrademouse').style.cursor = "url";
     }
-    if (points >= factoryV2.cost) {                          // Gör factoryV2 synlig när man har råd med den
+
+    if (points >= factoryV2.cost) {                              // Gör Mine synlig när man har råd med den
         document.getElementById('totalfactoriesV2').style.visibility = "visible";
         document.getElementById('costfactoryV2').style.visibility = "visible";
         document.getElementById('buyfactoryV2').innerHTML = "Buy A Mine";
@@ -497,78 +500,100 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('buybank').style.pointerEvents = "none"
         document.getElementById('buybank').style.cursor = "url";
     }
+
     if (points >= bank.cost) {                               // Gör bank synlig när man har råd med den
         document.getElementById('totalbanks').style.visibility = "visible";
         document.getElementById('costbanks').style.visibility = "visible";
         document.getElementById('buybank').innerHTML = "Buy A Bank";
     }
-    if (howmany == 1) {                                                 // Dessa visar vilken av x1/x10/x100 som är vald.
+
+    if (howmany == 1) {                                                 // Ändrar färg på x1/x10/x100-knapp till vit om den är vald
         document.getElementById('1x').style.backgroundColor = "white";
     }
+
     else {
         document.getElementById('1x').style.backgroundColor = "gray";
     }
+    
     if (howmany == 10) {
         document.getElementById('10x').style.backgroundColor = "white";
     }
     else {
         document.getElementById('10x').style.backgroundColor = "gray";
     }
+
     if (howmany == 100) {
         document.getElementById('100x').style.backgroundColor = "white";
     }
     else {
         document.getElementById('100x').style.backgroundColor = "gray";
     }
+
     //upgrades
     if (points >= powerCost.mouse1) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('mouseupg1').innerHTML = "Mouse x2";
     }
+
     if (points >= powerCost.mouse2) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('mouseupg2').innerHTML = "Mouse x5";
     }
+
     if (points >= powerCost.mouse3) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('mouseupg3').innerHTML = "Mouse x10";
     }
+
     if (points >= powerCost.mouse4) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('mouseupg4').innerHTML = "Mouse x20";
     }
+
     if (points >= powerCost.factory1) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('factoryupg1').innerHTML = "Factory x2";
     }
+
     if (points >= powerCost.factory2) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('factoryupg2').innerHTML = "Factory x5";
     }
+
     if (points >= powerCost.factory3) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('factoryupg3').innerHTML = "Factory x10";
     }
+
     if (points >= powerCost.factory4) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('factoryupg4').innerHTML = "Factory x20";
     }
+
     if (points >= powerCost.factoryV21) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('v2upg1').innerHTML = "Mine x2";
     }
+
     if (points >= powerCost.factoryV22) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('v2upg2').innerHTML = "Mine x5";
     }
+
     if (points >= powerCost.factoryV23) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('v2upg3').innerHTML = "Mine x10";
     }
+
     if (points >= powerCost.factoryV24) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('v2upg4').innerHTML = "Mine x20";
     }
+
     if (points >= powerCost.bank1) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('bankupg1').innerHTML = "Bank x2";
     }
+
     if (points >= powerCost.bank2) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('bankupg2').innerHTML = "Bank x5";
     }
+
     if (points >= powerCost.bank3) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('bankupg3').innerHTML = "Bank x10";
     }
+
     if (points >= powerCost.bank4) {                               // Gör text synlig när man har råd med uppgradering
         document.getElementById('bankupg4').innerHTML = "Bank x20";
     }
+
     if (points >= powerCost.mouse1) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('mouseupg1').style.opacity = "1";
         document.getElementById('mouseupg1').style.pointerEvents = "auto"
@@ -580,6 +605,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('mouseupg1').style.pointerEvents = "none"
         document.getElementById('mouseupg1').style.cursor = "url";
     }
+
     if (points >= powerCost.mouse2) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('mouseupg2').style.opacity = "1";
         document.getElementById('mouseupg2').style.pointerEvents = "auto"
@@ -591,6 +617,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('mouseupg2').style.pointerEvents = "none"
         document.getElementById('mouseupg2').style.cursor = "url";
     }
+
     if (points >= powerCost.mouse3) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('mouseupg3').style.opacity = "1";
         document.getElementById('mouseupg3').style.pointerEvents = "auto"
@@ -602,6 +629,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('mouseupg3').style.pointerEvents = "none"
         document.getElementById('mouseupg3').style.cursor = "url";
     }
+
     if (points >= powerCost.mouse4) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('mouseupg4').style.opacity = "1";
         document.getElementById('mouseupg4').style.pointerEvents = "auto"
@@ -613,6 +641,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('mouseupg4').style.pointerEvents = "none"
         document.getElementById('mouseupg4').style.cursor = "url";
     }
+
     if (points >= powerCost.factory1) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('factoryupg1').style.opacity = "1";
         document.getElementById('factoryupg1').style.pointerEvents = "auto"
@@ -624,6 +653,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('factoryupg1').style.pointerEvents = "none"
         document.getElementById('factoryupg1').style.cursor = "url";
     }
+
     if (points >= powerCost.factory2) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('factoryupg2').style.opacity = "1";
         document.getElementById('factoryupg2').style.pointerEvents = "auto"
@@ -635,6 +665,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('factoryupg2').style.pointerEvents = "none"
         document.getElementById('factoryupg2').style.cursor = "url";
     }
+
     if (points >= powerCost.factory3) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('factoryupg3').style.opacity = "1";
         document.getElementById('factoryupg3').style.pointerEvents = "auto"
@@ -646,6 +677,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('factoryupg3').style.pointerEvents = "none"
         document.getElementById('factoryupg3').style.cursor = "url";
     }
+
     if (points >= powerCost.factory4) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('factoryupg4').style.opacity = "1";
         document.getElementById('factoryupg4').style.pointerEvents = "auto"
@@ -657,6 +689,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('factoryupg4').style.pointerEvents = "none"
         document.getElementById('factoryupg4').style.cursor = "url";
     }
+
     if (points >= powerCost.factoryV21) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('v2upg1').style.opacity = "1";
         document.getElementById('v2upg1').style.pointerEvents = "auto"
@@ -668,6 +701,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('v2upg1').style.pointerEvents = "none"
         document.getElementById('v2upg1').style.cursor = "url";
     }
+
     if (points >= powerCost.factoryV22) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('v2upg2').style.opacity = "1";
         document.getElementById('v2upg2').style.pointerEvents = "auto"
@@ -679,6 +713,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('v2upg2').style.pointerEvents = "none"
         document.getElementById('v2upg2').style.cursor = "url";
     }
+
     if (points >= powerCost.factoryV23) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('v2upg3').style.opacity = "1";
         document.getElementById('v2upg3').style.pointerEvents = "auto"
@@ -690,6 +725,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('v2upg3').style.pointerEvents = "none"
         document.getElementById('v2upg3').style.cursor = "url";
     }
+
     if (points >= powerCost.factoryV24) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('v2upg4').style.opacity = "1";
         document.getElementById('v2upg4').style.pointerEvents = "auto"
@@ -701,6 +737,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('v2upg4').style.pointerEvents = "none"
         document.getElementById('v2upg4').style.cursor = "url";
     }
+
     if (points >= powerCost.bank1) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('bankupg1').style.opacity = "1";
         document.getElementById('bankupg1').style.pointerEvents = "auto"
@@ -712,6 +749,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('bankupg1').style.pointerEvents = "none"
         document.getElementById('bankupg1').style.cursor = "url";
     }
+
     if (points >= powerCost.bank2) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('bankupg2').style.opacity = "1";
         document.getElementById('bankupg2').style.pointerEvents = "auto"
@@ -723,6 +761,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('bankupg2').style.pointerEvents = "none"
         document.getElementById('bankupg2').style.cursor = "url";
     }
+
     if (points >= powerCost.bank3) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('bankupg3').style.opacity = "1";
         document.getElementById('bankupg3').style.pointerEvents = "auto"
@@ -734,6 +773,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('bankupg3').style.pointerEvents = "none"
         document.getElementById('bankupg3').style.cursor = "url";
     }
+
     if (points >= powerCost.bank4) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('bankupg4').style.opacity = "1";
         document.getElementById('bankupg4').style.pointerEvents = "auto"
@@ -745,6 +785,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('bankupg4').style.pointerEvents = "none"
         document.getElementById('bankupg4').style.cursor = "url";
     }
+
     if (points >= powerCost.bank1) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('bankupg1').style.opacity = "1";
         document.getElementById('bankupg1').style.pointerEvents = "auto"
@@ -756,6 +797,7 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('bankupg1').style.pointerEvents = "none"
         document.getElementById('bankupg1').style.cursor = "url";
     }
+
     if (points >= powerCost.win) {                                //Ändrar genomskinlighet och klickbarhet på knapp beroende på om man har råd.
         document.getElementById('winupg').style.opacity = "1";
         document.getElementById('winupg').style.pointerEvents = "auto"
@@ -768,111 +810,123 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
         document.getElementById('winupg').style.cursor = "url";
     }
 
-    if (powerBought.mouse1 == 1) {
+    if (powerBought.mouse1 == 1) {                              //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('mouseupg1').style.opacity = "0.5";
         document.getElementById('mouseupg1').style.pointerEvents = "none";
         document.getElementById('mouseupg1').style.cursor = "url";
         document.getElementById('mouseupg1').innerHTML = "Bought";
     }
-    if (powerBought.mouse2 == 1) {
+
+    if (powerBought.mouse2 == 1) {                              //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('mouseupg2').style.opacity = "0.5";
         document.getElementById('mouseupg2').style.pointerEvents = "none";
         document.getElementById('mouseupg2').style.cursor = "url";
         document.getElementById('mouseupg2').innerHTML = "Bought";
     }
-    if (powerBought.mouse3 == 1) {
+
+    if (powerBought.mouse3 == 1) {                              //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('mouseupg3').style.opacity = "0.5";
         document.getElementById('mouseupg3').style.pointerEvents = "none";
         document.getElementById('mouseupg3').style.cursor = "url";
         document.getElementById('mouseupg3').innerHTML = "Bought";
     }
-    if (powerBought.mouse4 == 1) {
+
+    if (powerBought.mouse4 == 1) {                              //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('mouseupg4').style.opacity = "0.5";
         document.getElementById('mouseupg4').style.pointerEvents = "none";
         document.getElementById('mouseupg4').style.cursor = "url";
         document.getElementById('mouseupg4').innerHTML = "Bought";
     }
 
-    if (powerBought.factory1 == 1) {
+    if (powerBought.factory1 == 1) {                           //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('factoryupg1').style.opacity = "0.5";
         document.getElementById('factoryupg1').style.pointerEvents = "none";
         document.getElementById('factoryupg1').style.cursor = "url";
         document.getElementById('factoryupg1').innerHTML = "Bought";
     }
-    if (powerBought.factory2 == 1) {
+
+    if (powerBought.factory2 == 1) {                            //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('factoryupg2').style.opacity = "0.5";
         document.getElementById('factoryupg2').style.pointerEvents = "none";
         document.getElementById('factoryupg2').style.cursor = "url";
         document.getElementById('factoryupg2').innerHTML = "Bought";
     }
-    if (powerBought.factory3 == 1) {
+
+    if (powerBought.factory3 == 1) {                            //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('factoryupg3').style.opacity = "0.5";
         document.getElementById('factoryupg3').style.pointerEvents = "none";
         document.getElementById('factoryupg3').style.cursor = "url";
         document.getElementById('factoryupg3').innerHTML = "Bought";
     }
-    if (powerBought.factory4 == 1) {
+
+    if (powerBought.factory4 == 1) {                            //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('factoryupg4').style.opacity = "0.5";
         document.getElementById('factoryupg4').style.pointerEvents = "none";
         document.getElementById('factoryupg4').style.cursor = "url";
         document.getElementById('factoryupg4').innerHTML = "Bought";
     }
 
-    if (powerBought.factoryV21 == 1) {
+    if (powerBought.factoryV21 == 1) {                          //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('v2upg1').style.opacity = "0.5";
         document.getElementById('v2upg1').style.pointerEvents = "none";
         document.getElementById('v2upg1').style.cursor = "url";
         document.getElementById('v2upg1').innerHTML = "Bought";
     }
-    if (powerBought.factoryV22 == 1) {
+
+    if (powerBought.factoryV22 == 1) {                          //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('v2upg2').style.opacity = "0.5";
         document.getElementById('v2upg2').style.pointerEvents = "none";
         document.getElementById('v2upg2').style.cursor = "url";
         document.getElementById('v2upg2').innerHTML = "Bought";
     }
-    if (powerBought.factoryV23 == 1) {
+
+    if (powerBought.factoryV23 == 1) {                          //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('v2upg3').style.opacity = "0.5";
         document.getElementById('v2upg3').style.pointerEvents = "none";
         document.getElementById('v2upg3').style.cursor = "url";
         document.getElementById('v2upg3').innerHTML = "Bought";
     }
-    if (powerBought.factoryV24 == 1) {
+
+    if (powerBought.factoryV24 == 1) {                          //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('v2upg4').style.opacity = "0.5";
         document.getElementById('v2upg4').style.pointerEvents = "none";
         document.getElementById('v2upg4').style.cursor = "url";
         document.getElementById('v2upg4').innerHTML = "Bought";
     }
 
-    if (powerBought.bank1 == 1) {
+    if (powerBought.bank1 == 1) {                              //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('bankupg1').style.opacity = "0.5";
         document.getElementById('bankupg1').style.pointerEvents = "none";
         document.getElementById('bankupg1').style.cursor = "url";
         document.getElementById('bankupg1').innerHTML = "Bought";
     }
-    if (powerBought.bank2 == 1) {
+
+    if (powerBought.bank2 == 1) {                             //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('bankupg2').style.opacity = "0.5";
         document.getElementById('bankupg2').style.pointerEvents = "none";
         document.getElementById('bankupg2').style.cursor = "url";
         document.getElementById('bankupg2').innerHTML = "Bought";
     }
-    if (powerBought.bank3 == 1) {
+
+    if (powerBought.bank3 == 1) {                            //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('bankupg3').style.opacity = "0.5";
         document.getElementById('bankupg3').style.pointerEvents = "none";
         document.getElementById('bankupg3').style.cursor = "url";
         document.getElementById('bankupg3').innerHTML = "Bought";
-    }
-    if (powerBought.bank4 == 1) {
+    }    
+
+    if (powerBought.bank4 == 1) {                              //Gör uppgradering oklickbar och genomskinlig när den är köpt
         document.getElementById('bankupg4').style.opacity = "0.5";
         document.getElementById('bankupg4').style.pointerEvents = "none";
         document.getElementById('bankupg4').style.cursor = "url";
         document.getElementById('bankupg4').innerHTML = "Bought";
     }
 
-    if (powerBought.win == 1) {
+    if (powerBought.win == 1) {                                //Visar "win-screen" när sista uppgraderingen är köpt
         document.getElementById('winscreen').style.visibility = "visible";
     }
 
-    if (hideTrueFalse == false) {
+    if (hideTrueFalse == false) {                              //Visar/gömmer ToolTip-ruta om knappen är klickad
         document.getElementById("tooltipRam").style.visibility = "visible";
         document.getElementById("tooltipInneRam").style.visibility = "visible";
         document.getElementById("toolHead").style.visibility = "visible";
@@ -900,8 +954,116 @@ window.setInterval(function () {          //Allt inom kodblocket körs varje mil
 
     }
 
-    multipleMousePrice();
-    multipleFactoryPrice();
-    multipleFactoryV2Price();
+    multipleMousePrice();       //Körs för att räkna ut priset på musen
+    multipleFactoryPrice();     //Körs för att räkna ut priset på musen
+    multipleFactoryV2Price();   //Körs för att räkna ut priset på musen
     multipleBankPrice();
 }, 1);
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <script type="text/javascript" src="js.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nova+Square&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <audio id="myAudio">
+        <source src="sound/klick_ljud.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="mouseAudio">
+        <source src="sound/mus_ljud.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="factoryAudio">
+        <source src="sound/fabrik_ljud.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="mineAudio">
+        <source src="sound/mine_ljud.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="bankAudio">
+        <source src="sound/bank_ljud.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="upgAudio">
+        <source src="sound/upg_ljud.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="winAudio">
+        <source src="sound/win_ljud.mp3" type="audio/mpeg">
+    </audio>
+    <!--BUTTONS-->
+    <button class="button" onClick="pointClick()"> Click me</button>
+    <button class="button" id='upgrademouse' onClick="upgradeMouse()">Buy Another Mouse</button>
+    <button class="button" id='buyfactory' onClick="addFactories()">Buy A Factory</button>
+    <button class="button" id='buyfactoryV2' onClick="addFactoriesV2()">?</button>
+    <button class="button" id='buybank' onClick="addBanks()">??</button>
+
+    <!--X-->
+    <div class="smallbuttons">
+        <button class="smallbutton" id='1x' onClick="howMany(1)">1x</button>
+        <button class="smallbutton" id='10x' onClick="howMany(10)">10x</button>
+        <button class="smallbutton" id='100x' onClick="howMany(100)">100x</button>
+    </div>
+    <div id="upgtitle">Upgrades</div>
+    <div id="upgcontainer">
+        <button class="upg" id="mouseupg1" onclick="choosePower(1)">?</button>
+        <button class="upg" id="factoryupg1" onclick="choosePower(5)">?</button>
+        <button class="upg" id="v2upg1" onclick="choosePower(9)">?</button>
+        <button class="upg" id="bankupg1" onclick="choosePower(13)">?</button>
+        <button class="upg" id="mouseupg2" onclick="choosePower(2)">??</button>
+        <button class="upg" id="factoryupg2" onclick="choosePower(6)">??</button>
+        <button class="upg" id="v2upg2" onclick="choosePower(10)">??</button>
+        <button class="upg" id="bankupg2" onclick="choosePower(14)">??</button>
+        <button class="upg" id="mouseupg3" onclick="choosePower(3)">???</button>
+        <button class="upg" id="factoryupg3" onclick="choosePower(7)">???</button>
+        <button class="upg" id="v2upg3" onclick="choosePower(11)">???</button>
+        <button class="upg" id="bankupg3" onclick="choosePower(15)">???</button>
+        <button class="upg" id="mouseupg4" onclick="choosePower(4)">????</button>
+        <button class="upg" id="factoryupg4" onclick="choosePower(8)">????</button>
+        <button class="upg" id="v2upg4" onclick="choosePower(12)">????</button>
+        <button class="upg" id="bankupg4" onclick="choosePower(16)">????</button>
+        <button class="upg" id="winupg" style="flex-grow:3;" onclick="choosePower(17)">World peace!</button>
+    </div>
+
+    <button class="button" id="toolHide" onclick="hideTool()"></button>
+    <div id="tooltipRam">
+
+        <div id="tooltipInneRam">
+
+            <h1 id="toolHead">Tool tips</h1>
+            <button class="button" id="toolPpc" onclick="ppcTool()">Mouse</button>
+            <button class="button" id="toolPps" onclick="ppsTool()">Buildings</button>
+            <button class="button" id="toolX" onclick="toolX()">1x/10x/100x</button>
+            <h2 id="toolH2"></h2>
+            <p id="toolP"></p>
+
+        </div>
+
+
+    </div>
+
+    <!--TEXT-->
+    <p id="infotitle">Info</p>
+    <div id="infobox">
+        <p id="total">NaN</p>
+        <p class="mouse" id="ppc">NaN</p>
+        <p class="factory" id="totalfactories">NaN</p>
+        <p class="factoryV2" id="totalfactoriesV2">NaN</p>
+        <p class="bank" id="totalbanks">NaN</p>
+        <p class="mouse" id="mousecost">NaN</p>
+        <p class="factory" id="costfactory">NaN</p>
+        <p class="factoryV2" id="costfactoryV2">NaN</p>
+        <p class="bank" id="costbanks">NaN</p>
+    </div>
+    <p id="signature">Made by Lil Audem and Grus!</p>
+    <button onclick="reload()" id="winscreen">CONGRATULATIONS! YOU HAVE PAID
+        OFF THE ALIENS AND ACHIEVED WORLD PEACE, EARTH IS FOREVER IN YOUR DEBT. PRESS THIS BUTTON TO ERASE YOUR
+        MEMORY.</button>
+</body>
+
+</html>
