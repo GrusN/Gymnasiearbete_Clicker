@@ -1,4 +1,4 @@
-alert("Aliens have waged war on earth! The only way to restore world peace is to pay them off, but no person on earth has enough money! You have been given a mission, as the worlds greatest entrepeneur, to make enough money to pay the aliens. The fate of earth rests on your shoulders, good luck."); //Textruta som dyker upp när sidan laddas, introduktion till spelets handling
+alert("Aliens have waged war on earth! The only way to restore world peace is to pay them off, but no person on earth has enough money! You have been given a mission, as the worlds greatest entrepeneur, to gather ten billion dollars to pay the aliens. The fate of earth rests on your shoulders, good luck."); //Textruta som dyker upp när sidan laddas, introduktion till spelets handling
 let points = 0;                          // Poäng
 
 let howmany = 1;                        // Värde som ändras mellan 1, 10 och 100 beroende på vilken knapp man valt.
