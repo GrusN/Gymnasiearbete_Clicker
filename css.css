@@ -43,7 +43,6 @@ top: 10px;
     position:absolute;
     top: 180px;
     border: 1px solid black;
-    width: 500px;
 }
 #infotitle {
     font-size: 40px;
@@ -91,7 +90,6 @@ top: 10px;
     height: 25px;
     background-color: red;
     border:solid black 1px;
-    box-shadow: 2px 5px;
     outline: none;
     font-family: 'Roboto Mono', monospace;
     top: 45px;
@@ -117,7 +115,6 @@ top: 10px;
     background-color: rgb(128, 199, 48);
     cursor: pointer;
     border: solid black 1px;
-    box-shadow: 2px 5px;
     outline: none;
     font-family: 'Roboto Mono', monospace;
 }
@@ -127,7 +124,6 @@ top: 10px;
     background-color: rgb(219, 219, 24);
     cursor: pointer;
     border: solid black 1px;
-    box-shadow: 2px 5px;
     outline: none;
     font-family: 'Roboto Mono', monospace;
 }
@@ -137,7 +133,6 @@ top: 10px;
     background-color: gray;
     cursor: pointer;
     border: solid black 1px;
-    box-shadow: 2px 5px;
     outline: none;
     font-family: 'Roboto Mono', monospace;
 }

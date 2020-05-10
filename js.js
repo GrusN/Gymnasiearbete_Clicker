@@ -433,9 +433,9 @@ window.setInterval(function () {          //Allt inom detta kodblock körs varje
     points = Math.ceil(points);                             //Avrundar points till heltal
     document.getElementById('total').innerText = "Points: " + points + " (" + pps + " per second)";
     document.getElementById('ppc').innerText = "Points per click: " + mouse.addvar;   //Dessa sju rader uppdaterar ppc, points, pps, mouse.cost, factory.count/cost, factoryV2.count/cost i html.
-    document.getElementById('totalfactories').innerText = "Factories: " + factory.count;
-    document.getElementById('totalfactoriesV2').innerText = "Mines: " + factoryV2.count;
-    document.getElementById('totalbanks').innerText = "Banks: " + bank.count;
+    document.getElementById('totalfactories').innerText = "Factories: " + factory.count + " (" + (factory.count * factory.addvar) + " points per second)";
+    document.getElementById('totalfactoriesV2').innerText = "Mines: " + factoryV2.count + " (" + (factoryV2.count * factoryV2.addvar) + " points per second)";
+    document.getElementById('totalbanks').innerText = "Banks: " + bank.count + " (" + (bank.count * bank.addvar) + " points per second)";
     document.getElementById('mousecost').innerText = "Mouse Cost--: " + mouse.modified;
     document.getElementById('costfactory').innerText = "Factory cost: " + factory.modified;
     document.getElementById('costfactoryV2').innerText = "Mine cost---: " + factoryV2.modified;
